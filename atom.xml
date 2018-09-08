@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>dolphinfine的博客</title>
-  
+  <icon>https://www.gravatar.com/avatar/86275b7f9f315296cb15c17e578d182d</icon>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://dolphinfine.github.io/"/>
   <updated>2018-09-08T15:02:17.034Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://dolphinfine.github.io/</id>
   
   <author>
-    <name>coolfzk@foxmail.com</name>
-    
+    <name>dolphinfine</name>
+    <email>coolfzk@foxmail.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
     <title>逝者如斯夫，不舍昼夜</title>
-    <link href="http://yoursite.com/2018/09/08/%E9%80%9D%E8%80%85%E5%A6%82%E6%96%AF%E5%A4%AB%EF%BC%8C%E4%B8%8D%E8%88%8D%E6%98%BC%E5%A4%9C/"/>
-    <id>http://yoursite.com/2018/09/08/逝者如斯夫，不舍昼夜/</id>
+    <link href="https://dolphinfine.github.io/2018/09/08/%E9%80%9D%E8%80%85%E5%A6%82%E6%96%AF%E5%A4%AB%EF%BC%8C%E4%B8%8D%E8%88%8D%E6%98%BC%E5%A4%9C/"/>
+    <id>https://dolphinfine.github.io/2018/09/08/逝者如斯夫，不舍昼夜/</id>
     <published>2018-09-08T14:39:23.000Z</published>
     <updated>2018-09-08T15:02:17.034Z</updated>
     
@@ -34,17 +34,17 @@
     
     </summary>
     
-      <category term="感悟" scheme="http://yoursite.com/categories/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="https://dolphinfine.github.io/categories/%E6%84%9F%E6%82%9F/"/>
     
     
-      <category term="感悟" scheme="http://yoursite.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="https://dolphinfine.github.io/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/09/08/hello-world/"/>
-    <id>http://yoursite.com/2018/09/08/hello-world/</id>
+    <link href="https://dolphinfine.github.io/2018/09/08/hello-world/"/>
+    <id>https://dolphinfine.github.io/2018/09/08/hello-world/</id>
     <published>2018-09-08T01:51:09.637Z</published>
     <updated>2018-09-08T14:46:35.242Z</updated>
     
