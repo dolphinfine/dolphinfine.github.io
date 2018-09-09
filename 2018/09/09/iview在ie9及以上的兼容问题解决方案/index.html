@@ -5,26 +5,26 @@
   
 
   
-  <title>iview在ie9及以上的兼容问题解决方案 | dolphinfine的博客</title>
+  <title>iview在ie9及以上的兼容问题解决方案 | 纸上得来终觉浅</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="是时候亮出这张图了：">
 <meta name="keywords" content="ie,axios,iview,vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iview在ie9及以上的兼容问题解决方案">
 <meta property="og:url" content="https://dolphinfine.github.io/2018/09/09/iview在ie9及以上的兼容问题解决方案/index.html">
-<meta property="og:site_name" content="dolphinfine的博客">
+<meta property="og:site_name" content="纸上得来终觉浅">
 <meta property="og:description" content="是时候亮出这张图了：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://dolphinfine.github.io/2018/09/09/iview在ie9及以上的兼容问题解决方案/ie.png">
 <meta property="og:image" content="https://dolphinfine.github.io/2018/09/09/iview在ie9及以上的兼容问题解决方案/按需引入.png">
 <meta property="og:image" content="https://dolphinfine.github.io/2018/09/09/iview在ie9及以上的兼容问题解决方案/兼容.png">
-<meta property="og:updated_time" content="2018-09-09T06:56:06.514Z">
+<meta property="og:updated_time" content="2018-09-09T09:46:26.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iview在ie9及以上的兼容问题解决方案">
 <meta name="twitter:description" content="是时候亮出这张图了：">
 <meta name="twitter:image" content="https://dolphinfine.github.io/2018/09/09/iview在ie9及以上的兼容问题解决方案/ie.png">
   
-    <link rel="alternate" href="/atom.xml" title="dolphinfine的博客" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="纸上得来终觉浅" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -43,8 +43,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">dolphinfine的博客</a>
+        <a href="/" id="logo">纸上得来终觉浅</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">绝知此事要躬行。</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -111,12 +115,15 @@
 <p>吐槽归吐槽，iview总体上还是不错的。下面说一下我在使用iview的过程中所遇到的ie9+的兼容性问题及解决方案。</p>
 <h2 id="安装babel-polyfill"><a href="#安装babel-polyfill" class="headerlink" title="安装babel-polyfill"></a>安装babel-polyfill</h2><p>IE浏览器没有内置Promise对象。不仅如此，几乎所有的ES6新增的方法在IE都不能用，此时你需要babel Polyfill</p>
 <ol>
-<li>首先npm install –save babel-polyfill</li>
-<li><p>修改webpack.config.js</p>
+<li>首先</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install babel-polyfill --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改webpack.base.conf.js</p>
 <p> 修改前</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">entry: &#123;</span><br><span class="line">    main: &apos;./src/main&apos;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p> 修改后</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">entry: &#123;</span><br><span class="line">    main: [&quot;babel-polyfill&quot;,&quot;./src/main&quot;],</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p> 看到网上有的教程安装完babel-polyfill又要安装es6-prommise，只能说一句：画蛇添足。</p>
 </li>
 </ol>
 <h2 id="兼容dataset"><a href="#兼容dataset" class="headerlink" title="兼容dataset"></a>兼容dataset</h2><p><code>[Vue warn]: Error in directive transfer-dom inserted hook: &quot;TypeError: 无法获取未定义或 null 引用的属性“transfer”&quot;</code><br>这是ie10及以下不支持dataset导致的，而iview的transfer-dom.js使用了这个属性</p>
@@ -164,17 +171,15 @@
 <p>一查发现果然是：ie8/9不支持cors跨域方案，取而代之的是ie的XDomainRequest方法</p>
 <p>不想再去研究XDomainRequest方法了。直接用webpack-dev-server提供的服务器代理方法（前提是后台已经配置好跨域）,大概这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    port: 8080,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        &apos;/api&apos;: &#123;</span><br><span class="line">        target: &apos;http://xx.xx.cn/&apos;,</span><br><span class="line">        pathRewrite: &#123;&apos;^/api&apos; : &apos;&apos;&#125;,</span><br><span class="line">        changeOrigin: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意这个方法并没有使ie9跨域，只是避开了cors跨域这个问题。</p>
-<p>想要真正解决的可以看看这个<a href="https://www.jianshu.com/p/4f04013b8b91" target="_blank" rel="noopener">IE8、9 下的资源跨域请求</a></p>
+<p>想要了解更多的可以看看这个<a href="https://www.jianshu.com/p/4f04013b8b91" target="_blank" rel="noopener">IE8、9 下的资源跨域请求</a></p>
 <h2 id="一些新特性不要用"><a href="#一些新特性不要用" class="headerlink" title="一些新特性不要用"></a>一些新特性不要用</h2><p>用了translateX()发现ie9无动于衷，还是乖乖用相对定位吧;</p>
 <p>线性渐变linear-gradient()可以用，但是ie不会识别的，所以先设置一个纯色背景或图片背景再设置线性渐变吧，不然ie背景设置不上。</p>
 <p>flex布局是挺爽，但是别用。想要同样的效果，table布局也不错。</p>
-<h2 id="demo下载"><a href="#demo下载" class="headerlink" title="demo下载"></a>demo下载</h2><p>以上提到的东西，我已经做了一个demo，放在我的git上了，<a href="https://github.com/dolphinfine" target="_blank" rel="noopener">点此下载</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://dolphinfine.github.io/2018/09/09/iview在ie9及以上的兼容问题解决方案/" data-id="cjlui98yl0000ssm1dygt2i9t" class="article-share-link">Share</a>
+      <a data-url="https://dolphinfine.github.io/2018/09/09/iview在ie9及以上的兼容问题解决方案/" data-id="cjluocifd000130m1ye4vqalc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios/">axios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ie/">ie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iview/">iview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
