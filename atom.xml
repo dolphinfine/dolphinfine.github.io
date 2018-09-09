@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>纸上得来终觉浅</title>
+  <title>纸上得来终觉浅,绝知此事要躬行。</title>
   <icon>https://www.gravatar.com/avatar/86275b7f9f315296cb15c17e578d182d</icon>
-  <subtitle>绝知此事要躬行。</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dolphinfine.github.io/"/>
